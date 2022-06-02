@@ -14,7 +14,7 @@ class Film(models.Model):
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE, related_name='filmes')
     description = models.TextField()
 
-    def __str__(self): return self.title
+    def __str__(self): return {self.title}
 
     class Meta:
         ordering = ['title']
