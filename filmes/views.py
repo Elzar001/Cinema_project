@@ -1,4 +1,6 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import permissions
+from rest_framework.filters import SearchFilter
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.viewsets import ModelViewSet
 from . import serializers
@@ -16,6 +18,10 @@ class FilmViewSet(ModelViewSet):
     queryset = Film.objects.all()
     serializer_class = serializers.FilmSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    filter_backends = (DjangoFilterBackend, SearchFilter)
+    filterset_fields = ('genre', )
+    search_fields = ('title',)
+    pagination_class = StandardPaginationClass
 
     def get_permissions(self):
         if self.action in ('create', 'update', 'partial_update', 'destroy',):
