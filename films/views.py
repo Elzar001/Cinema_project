@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import permissions, generics
 from rest_framework.filters import SearchFilter
@@ -63,3 +64,8 @@ class CommentViewSet(ModelViewSet):
             return [permissions.IsAuthor()]
         else:
             return [permissions.AllowAny()]
+
+
+def index(request):
+    film = Film.objects.all()
+    return render(request, 'index.html', {'film': film})

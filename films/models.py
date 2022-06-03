@@ -15,6 +15,7 @@ class Film(models.Model):
     title = models.CharField(max_length=50)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE, related_name='films')
     description = models.TextField()
+    video = models.FileField(upload_to='video/%y', null=True)
 
     def __str__(self): return self.title
 

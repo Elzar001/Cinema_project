@@ -9,5 +9,6 @@ router.register('films', views.FilmViewSet),
 router.register('genres', views.GenreViewSet),
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('', views.index),
 ]
