@@ -20,13 +20,15 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/v1/account/', include('account.urls')),
+    path('api/v1/', include('films.urls')),
+    path('api/v1/', include('likes.urls')),
+    path('api/v1/', include('rating.urls')),
+    # Swagger documentation
     path('^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-
-    path('admin/', admin.site.urls),
-    path('api/v1/account/', include('account.urls')),
-    path('api/v1/', include('filmes.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

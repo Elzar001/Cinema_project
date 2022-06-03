@@ -4,8 +4,9 @@ from rest_framework.routers import SimpleRouter
 from . import views
 
 router = SimpleRouter()
-router.register('filmes', views.FilmViewSet)
-router.register('genres', views.GenreViewSet)
+router.register('comments', views.CommentViewSet),
+router.register('films', views.FilmViewSet),
+router.register('genres', views.GenreViewSet),
 
 urlpatterns = [
     path('', include(router.urls))
