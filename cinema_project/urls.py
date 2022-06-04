@@ -21,9 +21,9 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/', include('films.urls')),
     path('api/v1/account/', include('account.urls')),
     path('api/v1/', include('favourites.urls')),
-    path('api/v1/', include('films.urls')),
     path('api/v1/', include('likes.urls')),
     path('', include('chat.urls')),
     path('api/v1/', include('rating.urls')),

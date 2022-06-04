@@ -11,13 +11,15 @@
 
     <title>Online Cinema!</title>
   </head>
-  <body>
-    <h1>Online cinema!</h1>
+  <body background="file:///home/elzar/Desktop/hakaton/individual%20hakaton/OnlineCinemaProject/img/1616566764_42-p-fon-dozhd-60.jpg">
+    <h4>Online Cinema!</h4>
     <hr>
     <div class="container">
       {% for video in film %}
-      <h3 class="text-center mt-2 mb-2">{{video.title}}</h3>
-      <h5 class="text-center mt-2 mb-2">{{video.description}}</h5>
+      <h3 class="text-center mt-2 mb-2">Название фильма: {{video.title}}</h3>
+      <div style="position: absolute; padding-left: 200px; padding-right: 200px;">{{video.description}}</div>
+      <img style="width: 195px" src="http://localhost:8000/media/{{video.preview}}">
+      <div>----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</div>
       <video
         id="my-video"
         class="video-js"
