@@ -7,7 +7,6 @@ from rest_framework.viewsets import ModelViewSet
 from . import serializers
 
 from films.models import Film, Genre, Comment
-from .permissions import IsAuthor
 from .serializers import CommentSerializer
 
 
