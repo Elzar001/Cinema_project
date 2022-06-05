@@ -8,15 +8,27 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://vjs.zencdn.net/7.19.2/video-js.css" rel="stylesheet" />
-
+    {% load static %}
     <title>Online Cinema!</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        padding: 7px 12px;
+        line-height: 18px;
+        font-size: 16px;
+      }
+
+    </style>
   </head>
-  <body background="file:///home/elzar/Desktop/hakaton/individual%20hakaton/OnlineCinemaProject/img/1616566764_42-p-fon-dozhd-60.jpg">
-    <h4>Online Cinema!</h4>
+  <body>
+    <h1>Online Cinema!</h1>
     <hr>
     <div class="container">
       {% for video in film %}
-      <h3 class="text-center mt-2 mb-2">Название фильма: {{video.title}}</h3>
+      <h3 class="text-center mt-2 mb-2">{{video.title}}</h3>
       <div style="position: absolute; padding-left: 200px; padding-right: 200px;">{{video.description}}</div>
       <img style="width: 195px" src="http://localhost:8000/media/{{video.preview}}">
       <div>----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</div>
