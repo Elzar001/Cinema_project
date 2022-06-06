@@ -1,13 +1,11 @@
-from django.contrib.auth.views import LogoutView
 from rest_framework import status, permissions
 from rest_framework.generics import GenericAPIView
-from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 from . import serializers
-from .send_email import send_confirmation_email, send_reset_password
+from .send_email import send_reset_password
 from django.contrib.auth import get_user_model
 from . tasks import send_activation_code
 
@@ -20,7 +18,6 @@ class RegistrationApiView(APIView):
         if serializer.is_valid(raise_exception=True):
             user = serializer.save()
             if user:
-                # send_confirmation_email(user) # просто отправка без парралельности
                 send_activation_code.delay(user.email, user.activation_code)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
